@@ -1,5 +1,7 @@
 {# Automatically extends the right outer layout and also handles AJAX siutations #}
 {% extends data.outerLayout %}
+{% import 'navigation.html' as navigation %}
+{% import 'footer.html' as footer %}
 
 {% set title = data.piece.title or data.page.title %}
 {% block title %}
@@ -17,6 +19,7 @@
 {% endblock %}
 
 {% block beforeMain %}
+{% render navigation.nav(data.global) %}
 <div class="bp-wrapper">
   <header class="bp-header">
     <img class="bp-header__logo" src="/images/logo.png" alt="ApostropheCMS logo">
@@ -38,6 +41,7 @@
 
 {% block afterMain %}
   </main>
+  {% render footer.footer() %}
   <footer class="bp-footer">
     <h3>Essential Links</h3>
     <ul class="bp-footer__links">
